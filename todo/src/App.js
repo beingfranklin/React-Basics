@@ -10,12 +10,12 @@ class App extends Component {
       };
   }
   increment = () => {
-    this.setState({count : this state count + 1});
+    this.setState({count : this.state.count + 1});
   }
   render(){
     return(
         <div>
-        <button onClick="{this.increment}">Increment</button>
+        <button onClick={this.increment}>Increment</button>
         {this.state.count}
         </div>
     );
