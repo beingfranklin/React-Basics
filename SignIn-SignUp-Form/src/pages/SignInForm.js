@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+var request = require('request');
+const url = 'http://4f0a21b9.ngrok.io/api/userLogin';
+var headers = {
+  'Content-Type': 'application/json',
+}
 
 class SignInForm extends Component {
     constructor() {
         super();
 
         this.state = {
-            email: '',
-            password: ''
+            username: '',
+            password: '',
+            type:''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -29,6 +36,39 @@ class SignInForm extends Component {
 
         console.log('The form was submitted with the following data:');
         console.log(this.state);
+        console.log(this.state.username);        
+        console.log(this.state.password)
+        console.log(this.state.type);
+      //   fetch(url, {
+      //     method: "POST", // *GET, POST, PUT, DELETE, etc.
+      //     mode: "no-cors", // no-cors, cors, *same-origin
+      //     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      //     credentials: "same-origin", // include, *same-origin, omit
+      //     headers: {
+      //         'Accept': 'application/json',
+      //         'Content-Type': 'application/json'
+      //     },
+      //     redirect: "follow", // manual, *follow, error
+      //     referrer: "no-referrer", // no-referrer, *client
+      //     body: JSON.stringify(this.state), // body data type must match "Content-Type" header
+      // }).then(res => res.json())
+      // .then(response => console.log('Success:', JSON.stringify(response)))
+      // .catch(error => console.error('Error:', error));
+      // // .then((response) => {
+      // //   response=JSON.stringify(response);
+      // //   console.log("Response is as below");
+      // //   console.log(response);
+      // // }).catch((error) => {
+      // //   console.log(error);
+      // // });
+
+        axios.post(url,this.state,{headers: headers})
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        })
     }
 
     render() {
@@ -36,13 +76,17 @@ class SignInForm extends Component {
         <div className="FormCenter">
             <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
             <div className="FormField">
-                <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+                <label className="FormField__Label" htmlFor="">Username</label>
+                <input type="text" id="" className="FormField__Input" placeholder="Enter your Type" name="username" value={this.state.username} onChange={this.handleChange} />
               </div>
 
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="password">Password</label>
                 <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
+              </div>
+              <div className="FormField">
+                <label className="FormField__Label" htmlFor="">Type</label>
+                <input type="text" id="" className="FormField__Input" placeholder="Enter your Type" name="type" value={this.state.type} onChange={this.handleChange} />
               </div>
 
               <div className="FormField">
