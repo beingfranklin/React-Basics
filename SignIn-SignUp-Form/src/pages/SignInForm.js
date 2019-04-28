@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-var request = require('request');
-const url = 'http://4f0a21b9.ngrok.io/api/userLogin';
+
+const url = 'https://88a7963c.ngrok.io/api/userLogin';
 var headers = {
   'Content-Type': 'application/json',
 }
