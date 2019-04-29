@@ -12,17 +12,22 @@ export default class Viewlist extends Component {
     constructor() {
         super();
         this.state = {
-            data: {}
+            data: []
             // Empty initialisation
         }
     }
     componentDidMount() {
+        console.log("Component did mount");
+
         const url = 'https://ac3cd296.ngrok.io/api/listdoctorrecords?doctorId=3020';
         axios.get(url)
             .then(res => {
-                this.state.data = JSON.parse(res);
-                console.log(this.state.data);
-                
+                console.log(res);
+                this.setState({
+                    data: res
+                });
+                // console.log(this.state.data);
+
             }).catch(function (error) {
                 // handle error
                 console.log(error);
@@ -32,6 +37,7 @@ export default class Viewlist extends Component {
     }
     render() {
         const { data } = this.state;
+        console.log(this.state.data);
         return (
             <div>
                 <ReactTable
@@ -44,12 +50,13 @@ export default class Viewlist extends Component {
                         {
                             Header: "Patient ID",
                             accessor: "owner"
-                        },
-                        {
-                            Header: 'Actions'
-
-
                         }
+                        // ,
+                        // {
+                        //     Header: 'Actions'
+
+
+                        // }
                     ]}
                     className="-striped -highlight"
                 />
