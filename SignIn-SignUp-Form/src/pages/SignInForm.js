@@ -100,10 +100,17 @@ class SignInForm extends Component {
                 <label className="FormField__Label" htmlFor="password">Password</label>
                 <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
               </div>
-              <div className="FormField">
+              {/* <div className="FormField">
                 <label className="FormField__Label" htmlFor="">Type</label>
                 <input type="text" id="" className="FormField__Input" placeholder="Enter your Type" name="type" value={this.state.type} onChange={this.handleChange} />
+              </div> */}
+
+              <div className="FormField"onChange={this.handleChange}>
+                 <input type="radio" value="doctor" name="type"/> Doctor
+                 <input type="radio" value="patient" name="type"/> Patient
+                 <input type="radio" value="regulator" name="type"/> Regulator
               </div>
+             
 
               <div className="FormField">
                   <button className="FormField__Button mr-20">Sign In</button> <Link to="/" className="FormField__Link">Create an account</Link>
