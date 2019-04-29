@@ -5,14 +5,13 @@ import SignInForm from './pages/SignInForm';
 import DashboardDoctor from './pages/Dashboarddoctor';
 import DashboardPatient from './pages/Dashboardpatient';
 import DashboardRegulator from './pages/Dashboardregulator';
-
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div>
         <Route exact path="/"  component={SignInForm}/>
               {/* <Route path="/sign-up" component={SignUpForm}/>                */}
               <Route path="/patient" component={DashboardDoctor}/>

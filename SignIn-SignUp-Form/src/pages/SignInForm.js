@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import sha256 from 'crypto-js/sha256';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
-import '../App.css';
+
 
 // import { start } from 'repl';
 
@@ -121,7 +121,7 @@ class SignInForm extends Component {
 
     render() {
         return (
-          <div>
+          <div className="App">
           <div className="App__Aside"></div>
           <div className="App__Form">
           <div className="PageSwitcher">
@@ -133,9 +133,7 @@ class SignInForm extends Component {
                   <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> 
                   {/* or <NavLink to="/sign-up" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink> */}
               </div>
-          </div>
-   
-        <div className="FormCenter">
+              <div className="FormCenter">
             <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
             <div className="FormField">
                 <label className="FormField__Label" htmlFor="">Username</label>
@@ -157,13 +155,17 @@ class SignInForm extends Component {
                  <input type="radio" value="regulator" name="type"/> Regulator
               </div>
              
-
               <div className="FormField">
                   <button className="FormField__Button mr-20">Sign In</button> <Link to="/" className="FormField__Link">Create an account</Link>
               </div>
             </form>
           </div>
+          
           </div>
+   
+        
+          </div>
+          
         );
     }
 }
