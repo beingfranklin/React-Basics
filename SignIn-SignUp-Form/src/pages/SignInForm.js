@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import sha256 from 'crypto-js/sha256';
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import '../App.css';
+
 // import { start } from 'repl';
 
 const url = 'https://ac3cd296.ngrok.io/api/userLogin';
@@ -119,6 +121,20 @@ class SignInForm extends Component {
 
     render() {
         return (
+          <div>
+          <div className="App__Aside"></div>
+          <div className="App__Form">
+          <div className="PageSwitcher">
+                <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
+                {/* <NavLink to="/sign-up" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink> */}
+              </div>
+
+              <div className="FormTitle">
+                  <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> 
+                  {/* or <NavLink to="/sign-up" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink> */}
+              </div>
+          </div>
+   
         <div className="FormCenter">
             <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
             <div className="FormField">
@@ -146,6 +162,7 @@ class SignInForm extends Component {
                   <button className="FormField__Button mr-20">Sign In</button> <Link to="/" className="FormField__Link">Create an account</Link>
               </div>
             </form>
+          </div>
           </div>
         );
     }
