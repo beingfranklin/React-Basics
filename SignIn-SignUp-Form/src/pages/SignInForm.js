@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import sha256 from 'crypto-js/sha256';
+// import { start } from 'repl';
 
-const url = 'https://11056209.ngrok.io/api/userLogin';
+const url = 'https://8acce34f.ngrok.io/api/userLogin';
+const dockey = 'https://8acce34f.ngrok.io/api/doctorprivatekey?doctorid=';
 var headers = {
   'Content-Type': 'application/json',
 }
@@ -61,24 +64,43 @@ class SignInForm extends Component {
       // // }).catch((error) => {
       // //   console.log(error);
       // // });
+        var docpassword = sha256(this.state.password).toString();
 
-        axios.post(url,this.state,{headers: headers})
+        axios.post(url,{
+            username: this.state.username,
+            password: docpassword,
+            type: this.state.type
+        },{headers: headers})
         .then(response => {
           response=JSON.parse(JSON.stringify(response));
           var loginres=response.data[0].status;
           console.log(loginres);
-          if(loginres==='ok')
+          if(loginres=='ok')
           {
-            //login
+
+          //login success 
+
           if((this.state.type)==="doctor")
           {
-            //Input hash after fetching
-            var hash= "$$$";
+            axios.get(dockey + this.state.username)
+            .then(function (res) {
+              //Fetching Hash using GET
+              console.log("AXIOS GET");
+              res =JSON.stringify(res);
+             console.log(res);
+             //Input hash after fetching
+            var hash= JSON.parse(res).data;
             localStorage.setItem('hash', hash);
-            console.log(localStorage.getItem('hash'));
+            console.log("Local Storage Hash -> " +localStorage.getItem('hash'));
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            });
+
+            
           }
           console.log("Login Page");
-
           }
           else if (loginres==='incorrect')
           {
