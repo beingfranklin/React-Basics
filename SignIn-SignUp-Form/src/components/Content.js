@@ -21,7 +21,7 @@ export default class Content extends Component {
                                                 <strong>Doctor Data !!</strong>
                                                 
                                                    <Route exact path="/doctor" component={Viewlist}/>
-                                                   <Route path="/doctor/:id" component={Detail}/> 
+                                                   <Route path="/doctor/:patientid/:doctorid/:recordid" component={Detail}/> 
                                             </p>
                                         </div>
                                     </div>

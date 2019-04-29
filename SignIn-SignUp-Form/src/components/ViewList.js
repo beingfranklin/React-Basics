@@ -57,7 +57,8 @@ export default class Viewlist extends Component {
                             Cell: row => (
                                 < button onClick={() =>{
                                     console.log(row.original.recordId);
-                                    this.props.history.push('/doctor/'+row.original.recordId)}}>button</button>
+                                    var patientid=((row.original.owner).split("#"));
+                                    this.props.history.push('/doctor/'+patientid[1]+'/'+localStorage.getItem('doctorId')+'/'+row.original.recordId)}}>button</button>
                             )
 
 

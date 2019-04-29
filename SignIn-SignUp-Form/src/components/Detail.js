@@ -10,8 +10,6 @@ export default class Detail extends Component {
             // Empty initialisation
         }
     }
-
-// this.props.match.params.id
 componentDidMount() {
         console.log("Details Component did mount");
         console.log(this.props.match.params.id);
@@ -36,7 +34,9 @@ componentDidMount() {
         console.log(this.state.data);
         return (
             <div>
-               <strong>{this.props.match.params.id}</strong>
+               <strong>PatientId : {this.props.match.params.patientid} </strong>
+               <strong>DoctorId : {this.props.match.params.doctorid}   </strong>
+               <strong>RecordId : {this.props.match.params.recordid}  </strong>
             </div >
         );
     }

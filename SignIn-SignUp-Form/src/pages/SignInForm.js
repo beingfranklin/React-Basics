@@ -72,8 +72,11 @@ class SignInForm extends Component {
              //Input hash after fetching
             var hash= JSON.parse(res).data;
             localStorage.setItem('hash', hash);
+            localStorage.setItem('doctorId',this.state.username);
             console.log("Local Storage Hash -> " +localStorage.getItem('hash'));
-            this.props.history.push('/dashboard');
+            console.log("Local Storage DoctorID -> " +localStorage.getItem('doctorId'));
+
+            this.props.history.push('/doctor');
             })
             .catch(function (error) {
               // handle error
