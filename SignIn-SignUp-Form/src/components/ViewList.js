@@ -20,14 +20,16 @@ export default class Viewlist extends Component {
         const url = 'https://ac3cd296.ngrok.io/api/listdoctorrecords?doctorId=3020';
         axios.get(url)
             .then(res => {
-                res =JSON.stringify(res);
+                res = JSON.stringify(res);
                 console.log(res);
-                this.data= JSON.parse(res).doctorID;
-
+                this.data = JSON.parse(res);
+            }).catch(function (error) {
+                // handle error
+                console.log(error);
             });
 
-    // this.getData();
-  }
+        // this.getData();
+    }
     render() {
         const { data } = this.state;
         return (
@@ -36,17 +38,17 @@ export default class Viewlist extends Component {
                     data={data}
                     columns={[
                         {
-                            Header: "Doctor ID",
-                            accessor: "doctorID"
+                            Header: "Record ID",
+                            accessor: "recordId"
                         },
                         {
                             Header: "Patient ID",
-                            accessor: "patientID"
+                            accessor: "owner"
                         },
                         {
                             Header: 'Actions'
 
-                        
+
                         }
                     ]}
                     className="-striped -highlight"
