@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import SideBar from '../components/Sidebar';
 import Content from '../components/Content';
 import "../Dash.css";
+
 class Dashboard extends Component {
 
     render() {
