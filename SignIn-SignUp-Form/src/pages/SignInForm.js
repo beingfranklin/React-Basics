@@ -4,8 +4,8 @@ import axios from 'axios';
 import sha256 from 'crypto-js/sha256';
 // import { start } from 'repl';
 
-const url = 'https://8acce34f.ngrok.io/api/userLogin';
-const dockey = 'https://8acce34f.ngrok.io/api/doctorprivatekey?doctorid=';
+const url = 'https://ac3cd296.ngrok.io/api/userLogin';
+const dockey = 'https://ac3cd296.ngrok.io/api/doctorprivatekey?doctorid=';
 var headers = {
   'Content-Type': 'application/json',
 }
@@ -83,7 +83,7 @@ class SignInForm extends Component {
           if((this.state.type)==="doctor")
           {
             axios.get(dockey + this.state.username)
-            .then(function (res) {
+            .then(res => {
               //Fetching Hash using GET
               console.log("AXIOS GET");
               res =JSON.stringify(res);
@@ -92,12 +92,13 @@ class SignInForm extends Component {
             var hash= JSON.parse(res).data;
             localStorage.setItem('hash', hash);
             console.log("Local Storage Hash -> " +localStorage.getItem('hash'));
+            this.props.history.push('/dashboard');
             })
             .catch(function (error) {
               // handle error
               console.log(error);
             });
-
+            // this.props.history.push('/dashboard');
             
           }
           console.log("Login Page");

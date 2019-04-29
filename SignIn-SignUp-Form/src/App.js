@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import SignUpForm from './pages/SignUpForm';
 import SignInForm from './pages/SignInForm';
-
+import Dashboard from './pages/Dashboard';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Router basename="/react-auth-ui/">
+      <Router>
         <div className="App">
           <div className="App__Aside"></div>
           <div className="App__Form">
@@ -21,10 +21,9 @@ class App extends Component {
                   <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
               </div>
 
-              <Route exact path="/" component={SignUpForm}>
-              </Route>
-              <Route path="/sign-in" component={SignInForm}>
-              </Route>
+              <Route exact path="/" component={SignUpForm}/> 
+              <Route path="/sign-in" component={SignInForm}/>
+            
           </div>
 
         </div>
