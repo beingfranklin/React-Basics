@@ -70,6 +70,13 @@ class SignInForm extends Component {
           if(loginres==='ok')
           {
             //login
+          if((this.state.type)==="doctor")
+          {
+            //Input hash after fetching
+            var hash= "$$$";
+            localStorage.setItem('hash', hash);
+            console.log(localStorage.getItem('hash'));
+          }
           console.log("Login Page");
 
           }
