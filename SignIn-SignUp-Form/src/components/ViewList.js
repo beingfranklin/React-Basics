@@ -24,7 +24,7 @@ export default class Viewlist extends Component {
             .then(res => {
                 console.log(res);
                 this.setState({
-                    data: res
+                    data: res.data
                 });
                 // console.log(this.state.data);
 
@@ -54,7 +54,7 @@ export default class Viewlist extends Component {
                         // ,
                         // {
                         //     Header: 'Actions'
-
+                            
 
                         // }
                     ]}

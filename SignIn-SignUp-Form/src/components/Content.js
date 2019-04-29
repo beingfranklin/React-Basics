@@ -21,11 +21,9 @@ export default class Content extends Component {
                                         <div className="col-md-8">
                                             <p className="text-center">
                                                 <strong>This is text</strong>
-                                                <Viewlist/>
-                                                   <Route path="/Dashboarddoctor" component={Viewlist}/>
-                                                   <Route path="/:id" component={Detail}/> 
-                                                  
-
+                                                
+                                                   <Route exact path="/doctor" component={Viewlist}/>
+                                                   <Route path="/doctor/:id" component={Detail}/> 
                                             </p>
                                         </div>
                                     </div>
