@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const url = 'https://88a7963c.ngrok.io/api/userLogin';
+const url = 'https://11056209.ngrok.io/api/userLogin';
 var headers = {
   'Content-Type': 'application/json',
 }
@@ -64,7 +64,23 @@ class SignInForm extends Component {
 
         axios.post(url,this.state,{headers: headers})
         .then(response => {
-          console.log(response);
+          response=JSON.parse(JSON.stringify(response));
+          var loginres=response.data[0].status;
+          console.log(loginres);
+          if(loginres==='ok')
+          {
+            //login
+          console.log("Login Page");
+
+          }
+          else if (loginres==='incorrect')
+          {
+          console.log("Error login");
+          }
+          else
+          {
+          console.log("ERRORR!!!");            
+          }
         })
         .catch(error => {
           console.log(error);
