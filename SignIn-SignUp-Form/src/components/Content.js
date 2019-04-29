@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import Viewlist from '../components/ViewList';
 import Detail from '../components/Detail';
-
-
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 
 export default class Content extends Component {
@@ -20,7 +18,7 @@ export default class Content extends Component {
                                     <div className="row">
                                         <div className="col-md-8">
                                             <p className="text-center">
-                                                <strong>This is text</strong>
+                                                <strong>Doctor Data !!</strong>
                                                 
                                                    <Route exact path="/doctor" component={Viewlist}/>
                                                    <Route path="/doctor/:id" component={Detail}/> 

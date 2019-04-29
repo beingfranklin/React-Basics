@@ -51,17 +51,23 @@ export default class Viewlist extends Component {
                             Header: "Patient ID",
                             accessor: "owner"
                         }
-                        // ,
-                        // {
-                        //     Header: 'Actions'
-                            
+                        ,
+                        {
+                            Header: 'Actions',
+                            Cell: row => (
+                                < button onClick={() =>{
+                                    console.log(row.original.recordId);
+                                    this.props.history.push('/doctor/'+row.original.recordId)}}>button</button>
+                            )
 
-                        // }
-                    ]}
+
+                        }
+                    ]
+                    }
                     className="-striped -highlight"
                 />
                 <br />
-            </div>
+            </div >
         );
     }
 }

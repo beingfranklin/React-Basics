@@ -44,28 +44,7 @@ class SignInForm extends Component {
         console.log(this.state.username);        
         console.log(this.state.password)
         console.log(this.state.type);
-      //   fetch(url, {
-      //     method: "POST", // *GET, POST, PUT, DELETE, etc.
-      //     mode: "no-cors", // no-cors, cors, *same-origin
-      //     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-      //     credentials: "same-origin", // include, *same-origin, omit
-      //     headers: {
-      //         'Accept': 'application/json',
-      //         'Content-Type': 'application/json'
-      //     },
-      //     redirect: "follow", // manual, *follow, error
-      //     referrer: "no-referrer", // no-referrer, *client
-      //     body: JSON.stringify(this.state), // body data type must match "Content-Type" header
-      // }).then(res => res.json())
-      // .then(response => console.log('Success:', JSON.stringify(response)))
-      // .catch(error => console.error('Error:', error));
-      // // .then((response) => {
-      // //   response=JSON.stringify(response);
-      // //   console.log("Response is as below");
-      // //   console.log(response);
-      // // }).catch((error) => {
-      // //   console.log(error);
-      // // });
+     
         var docpassword = sha256(this.state.password).toString();
 
         axios.post(url,{
