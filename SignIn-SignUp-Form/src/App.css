@@ -3,7 +3,10 @@
   display: flex;
   color: white;
 }
-
+input[type=radio] {
+  margin: 4px 0 0;
+  margin: 10px;
+}
 .App__Aside {
   width: 50%;
   background-color: #66DAC7;

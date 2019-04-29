@@ -150,9 +150,9 @@ class SignInForm extends Component {
               </div> */}
 
               <div className="FormField"onChange={this.handleChange}>
-                 <input type="radio" value="doctor" name="type"/> Doctor
-                 <input type="radio" value="patient" name="type"/> Patient
-                 <input type="radio" value="regulator" name="type"/> Regulator
+                 <input type="radio" value="doctor" name="type"/> Doctor  
+                 <input type="radio" value="patient" name="type"/> Patient  
+                 <input type="radio" value="regulator" name="type"/> Regulator  
               </div>
              
               <div className="FormField">
