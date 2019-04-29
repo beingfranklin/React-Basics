@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 import SignUpForm from './pages/SignUpForm';
 import SignInForm from './pages/SignInForm';
 import Dashboard from './pages/Dashboard';
+
+
 import './App.css';
 
 class App extends Component {
@@ -23,6 +25,7 @@ class App extends Component {
 
               <Route exact path="/" component={SignUpForm}/> 
               <Route path="/sign-in" component={SignInForm}/>
+              <Route path="/dashboard" component={Dashboard}/>
             
           </div>
 
