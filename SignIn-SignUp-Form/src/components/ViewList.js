@@ -18,8 +18,8 @@ export default class Viewlist extends Component {
     }
     componentDidMount() {
         console.log("Component did mount");
-
-        const url = 'https://ac3cd296.ngrok.io/api/listdoctorrecords?doctorId=3020';
+        console.log(localStorage.getItem('doctorId'));
+        const url = 'https://882ab0e0.ngrok.io/api/listdoctorrecords?doctorId='+localStorage.getItem('doctorId');
         axios.get(url)
             .then(res => {
                 console.log(res);
@@ -42,13 +42,14 @@ export default class Viewlist extends Component {
             <div>
                 <ReactTable
                     data={data}
+                    
                     columns={[
                         {
                             Header: "Record ID",
                             accessor: "recordId"
                         },
                         {
-                            Header: "Patient ID",
+                            Header: "Patient Details",
                             accessor: "owner"
                         }
                         ,
@@ -58,7 +59,7 @@ export default class Viewlist extends Component {
                                 < button onClick={() =>{
                                     console.log(row.original.recordId);
                                     var patientid=((row.original.owner).split("#"));
-                                    this.props.history.push('/doctor/'+patientid[1]+'/'+localStorage.getItem('doctorId')+'/'+row.original.recordId)}}>button</button>
+                                    this.props.history.push('/doctor/'+patientid[1]+'/'+localStorage.getItem('doctorId')+'/'+row.original.recordId)}}>View</button>
                             )
 
 

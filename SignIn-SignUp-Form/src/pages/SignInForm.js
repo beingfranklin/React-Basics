@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 
 // import { start } from 'repl';
 
-const url = 'https://ac3cd296.ngrok.io/api/userLogin';
-const dockey = 'https://ac3cd296.ngrok.io/api/doctorprivatekey?doctorid=';
+const url = 'https://882ab0e0.ngrok.io/api/userLogin';
+const dockey = 'https://882ab0e0.ngrok.io/api/doctorprivatekey?doctorid=';
 var headers = {
   'Content-Type': 'application/json',
 }

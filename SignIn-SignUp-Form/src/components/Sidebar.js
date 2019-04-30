@@ -23,7 +23,7 @@ export default class SideBar extends Component {
                             </span>
                         </div>
                     </form>
-                    <ul className="sidebar-menu" data-widget="tree">
+                    {/* <ul className="sidebar-menu" data-widget="tree">
                         <li className="header">MAIN NAVIGATION</li>
                         <li className="treeview">
                             <a href="#">
@@ -88,8 +88,8 @@ export default class SideBar extends Component {
                             </span>
                         </a>
                         </li>
-                    </ul>
-                </section>
+                    </ul>*/}
+                </section> 
             </aside> 
         )
     }

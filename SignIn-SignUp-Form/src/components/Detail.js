@@ -15,7 +15,7 @@ export default class Detail extends Component {
     async componentDidMount() {
         console.log("Details Component did mount");
         console.log(this.props.match.params.id);
-        const url = 'https://ac3cd296.ngrok.io/api/encryptionkey?patientid=2001&recordid=1001&doctorid=3020';
+        const url = 'https://882ab0e0.ngrok.io/api/encryptionkey?patientid=2001&recordid=1001&doctorid=3020';
         axios.get(url)
             .then(res => {
                 console.log(res);

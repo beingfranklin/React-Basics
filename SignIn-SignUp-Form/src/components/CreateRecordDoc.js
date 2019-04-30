@@ -4,7 +4,7 @@ import sha256 from 'crypto-js/sha256';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 
 
-const url = 'https://ac3cd296.ngrok.io/api/createRecord';
+const url = 'https://882ab0e0.ngrok.io/api/createRecord';
 
 var headers = {
   'Content-Type': 'application/json',
