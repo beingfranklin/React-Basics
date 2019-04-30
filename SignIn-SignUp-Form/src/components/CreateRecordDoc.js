@@ -106,5 +106,4 @@ class CreateRecordDoc extends Component {
         );
     }
 }
-
 export default CreateRecordDoc;

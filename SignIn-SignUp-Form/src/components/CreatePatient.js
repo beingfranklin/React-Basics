@@ -4,21 +4,20 @@ import sha256 from 'crypto-js/sha256';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 
 
-const url = 'https://ac3cd296.ngrok.io/api/createRecord';
+const url = 'https://3479c88a.ngrok.io/createPatient';
 
 var headers = {
   'Content-Type': 'application/json',
 }
 
-class CreateRecordDoc extends Component {
+class CreatePatient extends Component {
     constructor() {
         super();
 
         this.state = {
             firstName: '',
             lastName: '',            
-            password: '',
-            hospitalId: ''
+            password: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -42,22 +41,18 @@ class CreateRecordDoc extends Component {
         console.log(this.state);
         console.log(this.state.firstName);
         console.log(this.state.lastName);        
-        console.log(this.state.password)
-        console.log(this.state.hospitalId);
+        console.log(this.state.password);
      
-        var docpassword = sha256(this.state.password).toString();
 
         axios.post(url,{
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            password: docpassword,
-            hospitalId: this.state.hospitalId
+            password: this.state.password
         },{headers: headers})
         .then(response => {
           response=JSON.parse(JSON.stringify(response));
-          var loginres;
-        // loginres=response.data[0].status;
-          console.log(loginres);
+          // var loginres=response.data[0].status;
+          console.log(response);
           
         })
         .catch(error => {
@@ -91,13 +86,7 @@ class CreateRecordDoc extends Component {
                 <label className="FormField__Label" htmlFor="password">Password</label>
                 <input type="password" id="password" className="FormField__Inputs" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
               </div>
-              <div className="FormField">
-                <label className="FormField__Label" htmlFor="">Hospital Id</label>
-                <input type="text" id="" className="FormField__Inputs" placeholder="Enter your Hospital Id" name="hospitalId" value={this.state.hospitalId} onChange={this.handleChange} />
-              </div>
 
-            
-             
               <div className="FormField">
                   <button className="FormField__Button mr-20">Submit</button>
               </div>
@@ -114,4 +103,4 @@ class CreateRecordDoc extends Component {
     }
 }
 
-export default CreateRecordDoc;
+export default CreatePatient;

@@ -4,6 +4,8 @@ import Detail from '../components/Detail';
 import CreateRecordDoc from '../components/CreateRecordDoc';
 
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import CreatePatient from '../components/CreatePatient';
+
 
 export default class Content extends Component {
     render(){
@@ -25,21 +27,13 @@ export default class Content extends Component {
                                                    <Route exact path="/doctor" component={Viewlist}/>
                                                    <Route path="/doctor/:patientid/:doctorid/:recordid" component={Detail}/> 
                                                    <Route path="/doctor/create" component={CreateRecordDoc}/>
+                                                   <Route path="/hospital/create" component={CreatePatient}/>
+
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="box-footer">
-                                    <div className="row">
-                                        <div className="col-sm-3 col-xs-6">
-                                            <div className="description-block border-right">
-                                                <span className="description-percentage text-green"><i className="fa fa-caret-up"></i> 17%</span>
-                                                <h5 className="description-header">$35,210.43</h5>
-                                                <span className="description-text">TOTAL REVENUE</span>
-                                            </div>
-                                        </div>    
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
