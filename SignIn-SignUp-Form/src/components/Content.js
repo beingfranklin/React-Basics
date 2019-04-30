@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Viewlist from '../components/ViewList';
 import Detail from '../components/Detail';
+import CreateRecordDoc from '../components/CreateRecordDoc';
+
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 
 export default class Content extends Component {
@@ -12,7 +14,7 @@ export default class Content extends Component {
                         <div className="col-md-12">
                             <div className="box">
                                 <div className="box-header with-border">
-                                    <h3 className="box-title">Monthly Recap Report</h3>
+                                    <h3 className="box-title">Hey, Doctor!!</h3>
                                 </div>
                                 <div className="box-body">
                                     <div className="row">
@@ -22,6 +24,7 @@ export default class Content extends Component {
                                                 
                                                    <Route exact path="/doctor" component={Viewlist}/>
                                                    <Route path="/doctor/:patientid/:doctorid/:recordid" component={Detail}/> 
+                                                   <Route path="/doctor/create" component={CreateRecordDoc}/>
                                             </p>
                                         </div>
                                     </div>

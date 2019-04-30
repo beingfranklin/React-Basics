@@ -18,6 +18,25 @@ input[type=radio] {
   padding: 25px 40px;
   overflow: auto;
 }
+.App__Forms {
+  width: 100%;
+  background-color: white;
+  color:black;
+  padding: 25px 40px;
+  overflow: auto;
+}
+.FormField__Inputs{
+    width: 85%;
+    background-color: transparent;
+    border: none;
+    color: black;
+    outline: none;
+    border-bottom: 1px solid #445366;
+    font-size: 1em;
+    font-weight: 300;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
 
 .PageSwitcher {
   display: flex;
