@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Viewlist from '../components/ViewList';
 import Detail from '../components/Detail';
 import CreateRecordDoc from '../components/CreateRecordDoc';
@@ -8,7 +8,7 @@ import CreatePatient from '../components/CreatePatient';
 
 
 export default class Content extends Component {
-    render(){
+    render() {
         return (
             <div className="content-wrapper">
                 <section className="content-header">
@@ -23,17 +23,17 @@ export default class Content extends Component {
                                         <div className="col-md-8">
                                             <p className="text-center">
                                                 <strong>Doctor Data !!</strong>
-                                                
-                                                   <Route exact path="/doctor" component={Viewlist}/>
-                                                   <Route path="/doctor/:patientid/:doctorid/:recordid" component={Detail}/> 
-                                                   <Route path="/doctor/create" component={CreateRecordDoc}/>
-                                                   <Route path="/hospital/create" component={CreatePatient}/>
+
+                                                <Route exact path="/doctor" component={Viewlist} />
+                                                <Route path="/doctor/:patientid/:doctorid/:recordid" component={Detail} />
+                                                <Route path="/doctor/create" component={CreateRecordDoc} />
+                                                <Route path="/hospital/create" component={CreatePatient} />
 
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import JSEncrypt from 'node-jsencrypt';
+import { url } from './URL.js';
 
 
-
+// import JSEncrypt from 'node-jsencrypt';
 export default class Detail extends Component {
     constructor() {
         super();
@@ -15,7 +15,7 @@ export default class Detail extends Component {
     async componentDidMount() {
         console.log("Details Component did mount");
         console.log(this.props.match.params.id);
-        const url = 'https://882ab0e0.ngrok.io/api/encryptionkey?patientid=2001&recordid=1001&doctorid=3020';
+        url = url + '/api/encryptionkey?patientid=2001&recordid=1001&doctorid=3020';
         axios.get(url)
             .then(res => {
                 console.log(res);
@@ -25,25 +25,19 @@ export default class Detail extends Component {
                 console.log(this.state.data);
                 console.log(this.state.data.encryptedKey);
                 console.log(localStorage.getItem('hash'));
-
                 // var decrypt = new JSEncrypt();
-
                 // console.log(decrypt);
-
                 // decrypt.setPrivateKey(localStorage.getItem('hash'));
                 // var uncrypted = decrypt.decrypt(this.state.data.encryptedKey);
                 // console.log("uncrypted");
                 // console.log(uncrypted);
-
                 //IPFS Fetching
-                fetch('https://ipfs.io/ipfs/QmYqpfGh5x9djzUe7aWcQutTapfhfMhnfYXVYsDiuRcKiS')
+                fetch(ipfsurl)
                     .then(function (result) {
                         console.log("Fetching File Content");
                         // result=result
                         console.log(result);
                     });
-
-
             }).catch(function (error) {
                 // handle error
                 console.log(error);

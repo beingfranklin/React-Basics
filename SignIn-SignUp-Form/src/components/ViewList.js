@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { url } from './URL.js';
 
 // Import React Table
 import ReactTable from "react-table";
@@ -19,7 +20,7 @@ export default class Viewlist extends Component {
     componentDidMount() {
         console.log("Component did mount");
         console.log(localStorage.getItem('doctorId'));
-        const url = 'https://882ab0e0.ngrok.io/api/listdoctorrecords?doctorId='+localStorage.getItem('doctorId');
+        url = url + '/api/listdoctorrecords?doctorId=' + localStorage.getItem('doctorId');
         axios.get(url)
             .then(res => {
                 console.log(res);
@@ -42,7 +43,7 @@ export default class Viewlist extends Component {
             <div>
                 <ReactTable
                     data={data}
-                    
+
                     columns={[
                         {
                             Header: "Record ID",
@@ -56,10 +57,11 @@ export default class Viewlist extends Component {
                         {
                             Header: 'Actions',
                             Cell: row => (
-                                < button onClick={() =>{
+                                < button onClick={() => {
                                     console.log(row.original.recordId);
-                                    var patientid=((row.original.owner).split("#"));
-                                    this.props.history.push('/doctor/'+patientid[1]+'/'+localStorage.getItem('doctorId')+'/'+row.original.recordId)}}>View</button>
+                                    var patientid = ((row.original.owner).split("#"));
+                                    this.props.history.push('/doctor/' + patientid[1] + '/' + localStorage.getItem('doctorId') + '/' + row.original.recordId)
+                                }}>View</button>
                             )
 
 

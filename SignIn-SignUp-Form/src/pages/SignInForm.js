@@ -2,122 +2,116 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import sha256 from 'crypto-js/sha256';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
-
-
+import { url } from './URL.js';
 // import { start } from 'repl';
-
-const url = 'https://882ab0e0.ngrok.io/api/userLogin';
-const dockey = 'https://882ab0e0.ngrok.io/api/doctorprivatekey?doctorid=';
+urloriginal = url;
+url = urloriginal + '/api/userLogin';
+const dockey = urloriginal + '/api/doctorprivatekey?doctorid=';
 var headers = {
   'Content-Type': 'application/json',
 }
-
 class SignInForm extends Component {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.state = {
-            username: '',
-            password: '',
-            type:''
-        };
+    this.state = {
+      username: '',
+      password: '',
+      type: ''
+    };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    handleChange(e) {
-        let target = e.target;
-        let value = target.type === 'checkbox' ? target.checked : target.value;
-        let name = target.name;
+  handleChange(e) {
+    let target = e.target;
+    let value = target.type === 'checkbox' ? target.checked : target.value;
+    let name = target.name;
 
-        this.setState({
-          [name]: value
-        });
-    }
+    this.setState({
+      [name]: value
+    });
+  }
 
-    handleSubmit(e) {
-        e.preventDefault();
+  handleSubmit(e) {
+    e.preventDefault();
 
-        console.log('The form was submitted with the following data:');
-        console.log(this.state);
-        console.log(this.state.username);        
-        console.log(this.state.password)
-        console.log(this.state.type);
-     
-        var docpassword = sha256(this.state.password).toString();
+    console.log('The form was submitted with the following data:');
+    console.log(this.state);
+    console.log(this.state.username);
+    console.log(this.state.password)
+    console.log(this.state.type);
 
-        axios.post(url,{
-            username: this.state.username,
-            password: docpassword,
-            type: this.state.type
-        },{headers: headers})
-        .then(response => {
-          response=JSON.parse(JSON.stringify(response));
-          var loginres=response.data[0].status;
-          console.log(loginres);
-          if(loginres=='ok')
-          {
+    var docpassword = sha256(this.state.password).toString();
+
+    axios.post(url, {
+      username: this.state.username,
+      password: docpassword,
+      type: this.state.type
+    }, { headers: headers })
+      .then(response => {
+        response = JSON.parse(JSON.stringify(response));
+        var loginres = response.data[0].status;
+        console.log(loginres);
+        if (loginres == 'ok') {
 
           //login success 
 
-          if((this.state.type)==="doctor")
-          {
+          if ((this.state.type) === "doctor") {
             axios.get(dockey + this.state.username)
-            .then(res => {
-              //Fetching Hash using GET
-              console.log("AXIOS GET");
-              res =JSON.stringify(res);
-             console.log(res);
-             //Input hash after fetching
-            var hash= JSON.parse(res).data;
-            localStorage.setItem('hash', hash);
-            localStorage.setItem('doctorId',this.state.username);
-            console.log("Local Storage Hash -> " +localStorage.getItem('hash'));
-            console.log("Local Storage DoctorID -> " +localStorage.getItem('doctorId'));
+              .then(res => {
+                //Fetching Hash using GET
+                console.log("AXIOS GET");
+                res = JSON.stringify(res);
+                console.log(res);
+                //Input hash after fetching
+                var hash = JSON.parse(res).data;
+                localStorage.setItem('hash', hash);
+                localStorage.setItem('doctorId', this.state.username);
+                console.log("Local Storage Hash -> " + localStorage.getItem('hash'));
+                console.log("Local Storage DoctorID -> " + localStorage.getItem('doctorId'));
 
-            this.props.history.push('/doctor');
-            })
-            .catch(function (error) {
-              // handle error
-              console.log(error);
-            });
+                this.props.history.push('/doctor');
+              })
+              .catch(function (error) {
+                // handle error
+                console.log(error);
+              });
             // this.props.history.push('/dashboard');
-            
+
           }
           console.log("Login Page");
-          }
-          else if (loginres==='incorrect')
-          {
+        }
+        else if (loginres === 'incorrect') {
           console.log("Error login");
-          }
-          else
-          {
-          console.log("ERRORR!!!");            
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        })
-    }
+        }
+        else {
+          console.log("ERRORR!!!");
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
 
-    render() {
-        return (
-          <div className="App">
-          <div className="App__Aside"></div>
-          <div className="App__Form">
+  render() {
+    return (
+      <div className="App">
+        <div className="App__Aside"></div>
+        <div className="App__Form">
           <div className="PageSwitcher">
-                <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
-                {/* <NavLink to="/sign-up" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink> */}
-              </div>
+            <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
+            {/* <NavLink to="/sign-up" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink> */}
+          </div>
 
-              <div className="FormTitle">
-                  <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> 
-                  {/* or <NavLink to="/sign-up" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink> */}
-              </div>
-              <div className="FormCenter">
+          <div className="FormTitle">
+            <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink>
+            {/* or <NavLink to="/sign-up" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink> */}
+          </div>
+          <div className="FormCenter">
             <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
-            <div className="FormField">
+              <div className="FormField">
                 <label className="FormField__Label" htmlFor="">Username</label>
                 <input type="text" id="" className="FormField__Input" placeholder="Enter your Type" name="username" value={this.state.username} onChange={this.handleChange} />
               </div>
@@ -131,25 +125,25 @@ class SignInForm extends Component {
                 <input type="text" id="" className="FormField__Input" placeholder="Enter your Type" name="type" value={this.state.type} onChange={this.handleChange} />
               </div> */}
 
-              <div className="FormField"onChange={this.handleChange}>
-                 <input type="radio" value="doctor" name="type"/> Doctor  
-                 <input type="radio" value="patient" name="type"/> Patient  
-                 <input type="radio" value="regulator" name="type"/> Regulator  
+              <div className="FormField" onChange={this.handleChange}>
+                <input type="radio" value="doctor" name="type" /> Doctor
+                 <input type="radio" value="patient" name="type" /> Patient
+                 <input type="radio" value="regulator" name="type" /> Regulator
               </div>
-             
+
               <div className="FormField">
-                  <button className="FormField__Button mr-20">Sign In</button> <Link to="/" className="FormField__Link">Create an account</Link>
+                <button className="FormField__Button mr-20">Sign In</button> <Link to="/" className="FormField__Link">Create an account</Link>
               </div>
             </form>
           </div>
-          
-          </div>
-   
-        
-          </div>
-          
-        );
-    }
+
+        </div>
+
+
+      </div>
+
+    );
+  }
 }
 
 export default SignInForm;
