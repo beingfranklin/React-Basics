@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import sha256 from 'crypto-js/sha256';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
-import { url } from '../components/URL.js';
-// import { start } from 'repl';
-urloriginal = url;
-url = urloriginal + '/api/userLogin';
-const dockey = urloriginal + '/api/doctorprivatekey?doctorid=';
+import { ngrokurl } from '../components/URL.js';
+var url = ngrokurl;
+url = url + '/api/userLogin';
+const dockey = url + '/api/doctorprivatekey?doctorid=';
 var headers = {
   'Content-Type': 'application/json',
 }
@@ -73,9 +72,11 @@ class SignInForm extends Component {
         }
         else if (loginres === 'incorrect') {
           console.log("Error login");
+          alert("Incorrect Credentials!!");
         }
         else {
-          console.log("ERRORR!!!");
+          console.log("ERROR!!!");
+          alert("Error!!");
         }
       })
       .catch(error => {

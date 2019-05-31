@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import sha256 from 'crypto-js/sha256';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
-import { url } from './URL.js';
-
+import { ngrokurl } from './URL.js';
+var url = ngrokurl;
 url = url + '/createRecord';
 
 var headers = {

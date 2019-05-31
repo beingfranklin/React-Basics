@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { url } from './URL.js';
-
+import { ngrokurl, ipfsurl } from './URL.js';
+var url = ngrokurl;
 
 // import JSEncrypt from 'node-jsencrypt';
 export default class Detail extends Component {

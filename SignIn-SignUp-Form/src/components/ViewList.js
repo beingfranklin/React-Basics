@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { url } from './URL.js';
+import { ngrokurl } from './URL.js';
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+var url = ngrokurl;
+
 // json - create state - component did mount lifecyclehook- api call inside - get data .then - data to var - json 
 export default class Viewlist extends Component {
     constructor() {

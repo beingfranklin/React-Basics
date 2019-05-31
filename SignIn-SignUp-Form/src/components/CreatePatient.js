@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import sha256 from 'crypto-js/sha256';
-import { url } from './URL.js';
-
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import { ngrokurl } from './URL.js';
+var url = ngrokurl;
 
 url = url + '/createPatient';
 
