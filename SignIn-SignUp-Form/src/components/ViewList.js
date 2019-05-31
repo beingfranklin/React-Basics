@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { url } from './URL.js';
-
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-
 // json - create state - component did mount lifecyclehook- api call inside - get data .then - data to var - json 
-
-
 export default class Viewlist extends Component {
     constructor() {
         super();
@@ -33,7 +29,6 @@ export default class Viewlist extends Component {
                 // handle error
                 console.log(error);
             });
-
         // this.getData();
     }
     render() {
@@ -43,7 +38,6 @@ export default class Viewlist extends Component {
             <div>
                 <ReactTable
                     data={data}
-
                     columns={[
                         {
                             Header: "Record ID",
@@ -64,7 +58,6 @@ export default class Viewlist extends Component {
                                 }}>View</button>
                             )
 
-
                         }
                     ]
                     }
@@ -75,4 +68,3 @@ export default class Viewlist extends Component {
         );
     }
 }
-

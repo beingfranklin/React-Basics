@@ -4,16 +4,14 @@ import SideBar from '../components/Sidebar';
 import Content from '../components/Content';
 
 class Dashboard extends Component {
-
-    render() {
-      return (
-        <div>
-          <Header />
-          <SideBar />
-          <Content />
-        </div>
-      );
-    }
+  render() {
+    return (
+      <div>
+        <Header />
+        <SideBar />
+        <Content />
+      </div>
+    );
   }
-  
-  export default Dashboard;
+}
+export default Dashboard;
