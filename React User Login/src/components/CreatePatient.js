@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import sha256 from 'crypto-js/sha256';
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import { ngrokurl } from './URL.js';
 var url = ngrokurl;
-url = url + '/createRecord';
+
+url = url + '/createPatient';
 
 var headers = {
   'Content-Type': 'application/json',
 }
 
-class CreateRecordDoc extends Component {
+class CreatePatient extends Component {
   constructor() {
     super();
 
     this.state = {
-      username: '',
-      content: '',
-      doctorId: ''
+      firstName: '',
+      lastName: '',
+      password: '',
+      hospitalId:''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -39,22 +41,25 @@ class CreateRecordDoc extends Component {
 
     console.log('The form was submitted with the following data:');
     console.log(this.state);
-    console.log(this.state.username);
-    console.log(this.state.content);
-    console.log(this.state.doctorId);
+    console.log(this.state.firstName);
+    console.log(this.state.lastName);
+    console.log(this.state.password);
+    console.log(this.state.hospitalid);
+
 
 
     axios.post(url, {
-      username: this.state.username,
-      content: this.state.content,
-      doctorId: this.state.doctorId
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      password: this.state.password,
+      hospitalId: this.state.hospitalid
+
     }, { headers: headers })
       .then(response => {
-        console.log("loginres");
-
         response = JSON.parse(JSON.stringify(response));
-        var loginres = response.data[0].status;
-        console.log(loginres);
+        // var loginres=response.data[0].status;
+        console.log(response);
+
       })
       .catch(error => {
         console.log(error);
@@ -74,33 +79,35 @@ class CreateRecordDoc extends Component {
           <div className="FormCenter">
             <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
               <div className="FormField">
-                <label className="FormField__Label" htmlFor="">User Name</label>
-                <input type="text" id="" className="FormField__Inputs" placeholder="Enter your First Name" name="username" value={this.state.username} onChange={this.handleChange} />
+                <label className="FormField__Label" htmlFor="">First Name</label>
+                <input type="text" id="" className="FormField__Inputs" placeholder="Enter your First Name" name="firstName" value={this.state.firstName} onChange={this.handleChange} />
               </div>
 
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="">Last Name</label>
-                <input type="text" id="" className="FormField__Inputs" placeholder="Enter your Content" name="content" value={this.state.content} onChange={this.handleChange} />
+                <input type="text" id="" className="FormField__Inputs" placeholder="Enter your Last Name" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
               </div>
-
 
               <div className="FormField">
-                <label className="FormField__Label" htmlFor="">Doctor Id</label>
-                <input type="text" id="" className="FormField__Inputs" placeholder="Enter your Doctor Id" name="doctorId" value={this.state.doctorId} onChange={this.handleChange} />
+                <label className="FormField__Label" htmlFor="password">Password</label>
+                <input type="password" id="password" className="FormField__Inputs" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
               </div>
+
+              <div className="FormField">
+                <label className="FormField__Label" htmlFor="hospitalid">Hospital Id</label>
+                <input type="text" id="hospitalid" className="FormField__Inputs" placeholder="Enter your Hospital Id" name="Hospital Id" value={this.state.hospitalid} onChange={this.handleChange} />
+              </div>
+
               <div className="FormField">
                 <button className="FormField__Button mr-20">Submit</button>
               </div>
             </form>
-
-
           </div>
-
-
         </div>
       </div>
 
     );
   }
 }
-export default CreateRecordDoc;
+
+export default CreatePatient;

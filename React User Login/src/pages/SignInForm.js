@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 import { ngrokurl } from '../components/URL.js';
 var url = ngrokurl;
 url = url + '/api/userLogin';
-const dockey = url + '/api/doctorprivatekey?doctorid=';
+const dockey = ngrokurl + '/api/doctorprivatekey?doctorid=';
 var headers = {
   'Content-Type': 'application/json',
 }
@@ -68,7 +68,12 @@ class SignInForm extends Component {
               });
             // this.props.history.push('/dashboard');
           }
+          else if ((this.state.type) === "regulator")
+          {
+            
+          }
           console.log("Login Page");
+
         }
         else if (loginres === 'incorrect') {
           console.log("Error login");
