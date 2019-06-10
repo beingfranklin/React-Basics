@@ -70,7 +70,7 @@ class SignInForm extends Component {
           }
           else if ((this.state.type) === "regulator")
           {
-            
+            this.props.history.push('/regulator');
           }
           console.log("Login Page");
 

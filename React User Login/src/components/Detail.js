@@ -15,7 +15,7 @@ export default class Detail extends Component {
     async componentDidMount() {
         console.log("Details Component did mount");
         console.log(this.props.match.params.id);
-        url = url + '/api/encryptionkey?patientid=2001&recordid=1001&doctorid=3020';
+        url = url + '/api/encryptionkey?patientid=2001&recordid=1001&doctorid=3001';
         axios.get(url)
             .then(res => {
                 console.log(res);

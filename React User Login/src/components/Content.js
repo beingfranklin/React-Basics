@@ -26,8 +26,8 @@ export default class Content extends Component {
                                                 <Route exact path="/doctor" component={Viewlist} />
                                                 <Route path="/doctor/:patientid/:doctorid/:recordid" component={Detail} />
                                                 <Route path="/doctor/create" component={CreateRecordDoc} />
-                                                <Route path="/regulator/create/doctor" component={CreateRecordDoctor} />
-                                                <Route path="/regulator/create/" component={RegulatorChoice} />
+                                                <Route exact path="/regulator/create/doctor" component={CreateRecordDoctor} />
+                                                <Route exact path="/regulator/create/" component={RegulatorChoice} />
                                                 <Route path="/hospital/create" component={CreatePatient} />
                                             </p>
                                         </div>

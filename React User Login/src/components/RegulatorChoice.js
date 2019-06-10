@@ -3,7 +3,10 @@ class RegulatorChoice extends Component {
     render() {
          return (
       <div className="App" >
-          <strong>Choice Page</strong>
+           <div className="box-header with-border">
+                                    <h3 className="box-title">Hey, Regulator! Select Your Choice!!</h3>
+                                    {/* Choices - Create Doctor and create hospital */}
+                                </div>
           </div>
           );
     }
