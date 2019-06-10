@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import Viewlist from '../components/ViewList';
 import Detail from '../components/Detail';
 import CreateRecordDoc from '../components/CreateRecordDoc';
-
+import CreateRecordDoctor from '../components/CreateRecordDoctor';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import CreatePatient from '../components/CreatePatient';
+
 
 
 export default class Content extends Component {
@@ -16,18 +17,21 @@ export default class Content extends Component {
                         <div className="col-md-12">
                             <div className="box">
                                 <div className="box-header with-border">
-                                    <h3 className="box-title">Hey, Doctor!!</h3>
+                                    {/* <h3 className="box-title">Hey, Doctor!!</h3> */}
                                 </div>
                                 <div className="box-body">
                                     <div className="row">
                                         <div className="col-md-8">
                                             <p className="text-center">
-                                                <strong>Doctor Data !!</strong>
+                                                {/* <strong>Doctor Data !!</strong> */}
 
                                                 <Route exact path="/doctor" component={Viewlist} />
                                                 <Route path="/doctor/:patientid/:doctorid/:recordid" component={Detail} />
                                                 <Route path="/doctor/create" component={CreateRecordDoc} />
+                                                <Route path="/regulator/create/doctor" component={CreateRecordDoctor} />
+                                                <Route path="/regulator/create/" component={CreateRecordDoctor} />
                                                 <Route path="/hospital/create" component={CreatePatient} />
+
 
                                             </p>
                                         </div>
