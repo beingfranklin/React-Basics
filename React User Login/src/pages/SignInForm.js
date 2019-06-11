@@ -124,5 +124,4 @@ class SignInForm extends Component {
     );
   }
 }
-
 export default SignInForm;

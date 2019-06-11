@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { ngrokurl, ipfsurl } from './URL.js';
+import CryptoJSAES from "crypto-js/aes";
+import CryptoJS from "crypto-js"
+import { ngrokurl } from './URL.js';
 var url = ngrokurl;
 
 // import JSEncrypt from 'node-jsencrypt';
@@ -28,7 +30,6 @@ export default class Detail extends Component {
                     data: res.data
                 });
                 console.log(this.state.data);
-                console.log(this.state.data.encryptedKey);
                 console.log(localStorage.getItem('hash'));
                 // var decrypt = new JSEncrypt();
                 // console.log(decrypt);
@@ -40,20 +41,28 @@ export default class Detail extends Component {
 
                 //IPFS Fetching
 
-
-                fetch(ipfsurl)
-                    .then(function (result) {
+                console.log(this.state.data.aesKey);
+                console.log(this.state.data.fileHash);
+                var ipfsurl  = 'https://ipfs.io/ipfs/' + this.state.data.fileHash ;
+                axios.get(ipfsurl)
+                .then(res => {
                         console.log("Fetching File Content");
-                        // result=result
-                        console.log(result);
-                    });
-            }).catch(function (error) {
+                        console.log(res.data);
+             
+                        //Decryption
+                        var resdata=res.data;
+                        var decrypted = CryptoJSAES.decrypt(resdata.toString(), this.state.data.aesKey);
+                        console.log(CryptoJS);
+                        //Read Record
+                        console.log(decrypted.toString(CryptoJS.enc.Utf8));
+
+                    }).catch(function (error) {
                 // handle error
                 console.log(error);
-            });
+            })
+           })   
+        }
 
-        // this.getData();
-    }
     render() {
         const { data } = this.state;
         return (
