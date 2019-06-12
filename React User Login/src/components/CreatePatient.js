@@ -5,7 +5,7 @@ import sha256 from 'crypto-js/sha256';
 import { ngrokurl } from './URL.js';
 var url = ngrokurl;
 
-url = url + '/createPatient';
+url = url + '/api/createPatient';
 
 var headers = {
   'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ class CreatePatient extends Component {
       firstName: '',
       lastName: '',
       password: '',
-      hospitalId:''
+      hospitalId: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
