@@ -4,7 +4,7 @@ import sha256 from 'crypto-js/sha256';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import { ngrokurl } from './URL.js';
 var url = ngrokurl;
-url = url + '/createRecord';
+url = url + '/api/createRecord';
 
 var headers = {
   'Content-Type': 'application/json',
@@ -46,7 +46,6 @@ class CreateRecordDoc extends Component {
     }, { headers: headers })
       .then(response => {
         console.log("loginres");
-
         response = JSON.parse(JSON.stringify(response));
         var loginres = response.data[0].status;
         console.log(loginres);
@@ -67,7 +66,7 @@ class CreateRecordDoc extends Component {
             <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="">User Name</label>
-                <input type="text" id="" className="FormField__Inputs" placeholder="Enter your First Name" name="username" value={this.state.username} onChange={this.handleChange} />
+                <input type="text" id="" className="FormField__Inputs" placeholder="Enter your User Name" name="username" value={this.state.username} onChange={this.handleChange} />
               </div>
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="">Last Name</label>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Viewlist from '../components/ViewList';
 import ListDoctors from '../components/ListDoctors';
+import ListHospitals from '../components/ListHospitals';
+
 import Detail from '../components/Detail';
 import CreateRecordDoc from '../components/CreateRecordDoc';
 import CreateRecordDoctor from '../components/CreateRecordDoctor';
@@ -27,6 +29,8 @@ export default class Content extends Component {
                                                 {/* <strong>Doctor Data !!</strong> */}
                                                 <Route exact path="/doctor" component={Viewlist} />
                                                 <Route exact path="/regulator" component={ListDoctors} />
+                                                <Route exact path="/regulator" component={ListHospitals} />
+
                                                 <Route path="/doctor/:patientid/:doctorid/:recordid" component={Detail} />
                                                 <Route path="/doctor/create" component={CreateRecordDoc} />
                                                 <Route exact path="/regulator/create/doctor" component={CreateRecordDoctor} />

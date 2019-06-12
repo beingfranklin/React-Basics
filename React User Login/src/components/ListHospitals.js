@@ -7,7 +7,7 @@ import "react-table/react-table.css";
 var url = ngrokurl;
 
 // json - create state - component did mount lifecyclehook- api call inside - get data .then - data to var - json 
-export default class ListDoctors extends Component {
+export default class ListHospitals extends Component {
     constructor() {
         super();
         this.state = {
@@ -18,7 +18,7 @@ export default class ListDoctors extends Component {
     componentDidMount() {
         console.log("Component did mount");
         // console.log(localStorage.getItem('doctorId'));
-        url = url + '/api/listDoctors';
+        url = url + '/api/listHospitals';
         axios.get(url)
             .then(res => {
                 console.log(res);
@@ -44,20 +44,12 @@ export default class ListDoctors extends Component {
 
                     columns={[
                         {
-                            Header: "Doctor ID",
-                            accessor: "doctorId"
-                        },
-                        {
-                            Header: "Fast Name",
-                            accessor: "firstName"
-                        },
-                        {
-                            Header: "Last Name",
-                            accessor: "lastName"
-                        },
-                        {
                             Header: "Hospital ID",
-                            accessor: "hospital"
+                            accessor: "hospitalId"
+                        },
+                        {
+                            Header: "Hospital Name",
+                            accessor: "hospitalName"
                         }
                     ]
                     }
