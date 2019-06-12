@@ -21,7 +21,7 @@ export default class Detail extends Component {
         var urlsplit = window.location.href.split("/");
         console.log(urlsplit[urlsplit.length - 2]);
 
-        url = url + '/api/encryptionkey?patientid=' + urlsplit[urlsplit.length - 3] + '&recordid=' + urlsplit[urlsplit.length - 1] + '&doctorid=' + urlsplit[urlsplit.length - 2];
+        url = ngrokurl + '/api/encryptionkey?patientid=' + urlsplit[urlsplit.length - 3] + '&recordid=' + urlsplit[urlsplit.length - 1] + '&doctorid=' + urlsplit[urlsplit.length - 2];
         console.log(url);
         axios.get(url)
             .then(res => {
@@ -43,25 +43,25 @@ export default class Detail extends Component {
 
                 console.log(this.state.data.aesKey);
                 console.log(this.state.data.fileHash);
-                var ipfsurl  = 'https://ipfs.io/ipfs/' + this.state.data.fileHash ;
+                var ipfsurl = 'https://ipfs.io/ipfs/' + this.state.data.fileHash;
                 axios.get(ipfsurl)
-                .then(res => {
+                    .then(res => {
                         console.log("Fetching File Content");
                         console.log(res.data);
-             
+
                         //Decryption
-                        var resdata=res.data;
+                        var resdata = res.data;
                         var decrypted = CryptoJSAES.decrypt(resdata.toString(), this.state.data.aesKey);
                         console.log(CryptoJS);
                         //Read Record
                         console.log(decrypted.toString(CryptoJS.enc.Utf8));
 
                     }).catch(function (error) {
-                // handle error
-                console.log(error);
+                        // handle error
+                        console.log(error);
+                    })
             })
-           })   
-        }
+    }
 
     render() {
         const { data } = this.state;

@@ -1,3 +1,3 @@
-const ngrokurl = "https://c8247f29.ngrok.io";
+const ngrokurl = "https://2bce2b1e.ngrok.io";
 const ipfsurl = "";
 export { ngrokurl, ipfsurl };
