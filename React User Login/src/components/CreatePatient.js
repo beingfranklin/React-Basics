@@ -5,7 +5,7 @@ import sha256 from 'crypto-js/sha256';
 import { ngrokurl } from './URL.js';
 var url = ngrokurl;
 
-url = url + '/api/createPatient';
+url = url + '/createPatient';
 
 var headers = {
   'Content-Type': 'application/json',
@@ -18,8 +18,7 @@ class CreatePatient extends Component {
     this.state = {
       firstName: '',
       lastName: '',
-      password: '',
-      hospitalId: ''
+      password: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -44,22 +43,21 @@ class CreatePatient extends Component {
     console.log(this.state.firstName);
     console.log(this.state.lastName);
     console.log(this.state.password);
-    console.log(this.state.hospitalid);
 
-
-
-    axios.post(url, {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      password: this.state.password,
-      hospitalId: this.state.hospitalid
-
-    }, { headers: headers })
+    axios.get(url, {
+      headers: headers, params: {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        password: this.state.password
+      }
+    })
       .then(response => {
         response = JSON.parse(JSON.stringify(response));
-        // var loginres=response.data[0].status;
-        console.log(response);
-
+        var loginres = response.data.status;
+        console.log(loginres);
+        if (loginres == 'ok') {
+          alert('Patient Created Successfully');
+        }
       })
       .catch(error => {
         console.log(error);
@@ -73,7 +71,7 @@ class CreatePatient extends Component {
 
 
           <div className="FormTitle">
-            <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Create Record</NavLink>
+            <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Create Patient</NavLink>
             {/* or <NavLink to="/sign-up" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink> */}
           </div>
           <div className="FormCenter">
@@ -92,11 +90,11 @@ class CreatePatient extends Component {
                 <label className="FormField__Label" htmlFor="password">Password</label>
                 <input type="password" id="password" className="FormField__Inputs" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
               </div>
-
+              {/* 
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="hospitalid">Hospital Id</label>
                 <input type="text" id="hospitalid" className="FormField__Inputs" placeholder="Enter your Hospital Id" name="Hospital Id" value={this.state.hospitalid} onChange={this.handleChange} />
-              </div>
+              </div> */}
 
               <div className="FormField">
                 <button className="FormField__Button mr-20">Submit</button>

@@ -68,9 +68,15 @@ class SignInForm extends Component {
               });
             // this.props.history.push('/dashboard');
           }
-          else if ((this.state.type) === "regulator")
-          {
+          else if ((this.state.type) === "regulator") {
             this.props.history.push('/regulator');
+          }
+          else if ((this.state.type) === "hospital") {
+            this.props.history.push('/hospital/view/doctor');
+            localStorage.setItem('hospitalId', this.state.username);
+            console.log("Local Storage Hospital ID -> " + localStorage.getItem('hospitalId'));
+
+
           }
           console.log("Login Page");
 
@@ -111,7 +117,7 @@ class SignInForm extends Component {
               </div>
               <div className="FormField" onChange={this.handleChange}>
                 <input type="radio" value="doctor" name="type" /> Doctor
-                 <input type="radio" value="patient" name="type" /> Patient
+                 <input type="radio" value="hospital" name="type" /> Hospital
                  <input type="radio" value="regulator" name="type" /> Regulator
               </div>
               <div className="FormField">

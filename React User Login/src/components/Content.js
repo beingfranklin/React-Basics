@@ -10,6 +10,7 @@ import CreateRecordHospital from '../components/CreateRecordHospital';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import CreatePatient from '../components/CreatePatient';
 import RegulatorChoice from '../components/RegulatorChoice';
+import HospitalListDoctors from '../components/HospitalListDoctors';
 
 export default class Content extends Component {
     render() {
@@ -36,7 +37,10 @@ export default class Content extends Component {
                                                 <Route exact path="/regulator/create/doctor" component={CreateRecordDoctor} />
                                                 <Route exact path="/regulator/create/hospital" component={CreateRecordHospital} />
                                                 <Route exact path="/regulator/create/" component={RegulatorChoice} />
-                                                <Route path="/hospital/create" component={CreatePatient} />
+                                                <Route exact path="/hospital/create/patient" component={CreatePatient} />
+                                                <Route exact path="/hospital/view/doctor" component={HospitalListDoctors} />
+
+
                                             </p>
                                         </div>
                                     </div>
