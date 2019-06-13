@@ -100,7 +100,9 @@ class SignInForm extends Component {
         <div className="App__Aside"></div>
         <div className="App__Form">
           <div className="PageSwitcher">
-            <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
+            <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">
+              
+            </NavLink>
           </div>
           <div className="FormTitle">
             <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink>

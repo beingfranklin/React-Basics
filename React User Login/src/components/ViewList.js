@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { ngrokurl } from './URL.js';
-// Import React Table
+import Card from 'card-vibes';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 var url = ngrokurl;
@@ -38,6 +38,9 @@ export default class Viewlist extends Component {
         console.log(this.state.data);
         return (
             <div>
+                <Card style={{ width: '100%', padding: '20px' }}>
+                    <h3 className="box-title">Record List</h3>
+                </Card>
                 <ReactTable
                     data={data}
                     columns={[

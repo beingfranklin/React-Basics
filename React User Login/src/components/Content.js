@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Viewlist from '../components/ViewList';
 import ListDoctors from '../components/ListDoctors';
 import ListHospitals from '../components/ListHospitals';
-
+import DoctorChoice from '../components/DoctorChoice';
+import ViewList from '../components/ViewList';
 import Detail from '../components/Detail';
 import CreateRecordDoc from '../components/CreateRecordDoc';
 import CreateDoctor from './CreateDoctor';
@@ -29,22 +30,23 @@ export default class Content extends Component {
                                         <div className="col-md-8">
                                             <p className="text-center">
                                                 {/* <strong>Doctor Data !!</strong> */}
-                                                <Route exact path="/doctor" component={Viewlist} />
-                                                <Route exact path="/regulator" component={ListDoctors} />
-                                                <Route exact path="/regulator" component={ListHospitals} />
+                                                <Route exact path="/doctor" component={DoctorChoice} />
+                                                <Route exact path="/doctor/view" component={ViewList} />
 
                                                 <Route path="/doctor/:patientid/:doctorid/:recordid" component={Detail} />
                                                 <Route path="/doctor/create" component={CreateRecordDoc} />
+
+                                                <Route exact path="/regulator/view" component={ListDoctors} />
+                                                <Route exact path="/regulator/view" component={ListHospitals} />
+                                                <Route exact path="/regulator" component={RegulatorChoice} />
                                                 <Route exact path="/regulator/create/doctor" component={CreateDoctor} />
                                                 <Route exact path="/regulator/create/hospital" component={CreateHospital} />
-                                                <Route exact path="/regulator/create/" component={RegulatorChoice} />
-                                                <Route exact path="/hospital/" component={HospitalChoice} />
-                                                <Route exact path="/hospital/create/" component={HospitalChoice} />
+                                                <Route exact path="/hospital" component={HospitalChoice} />
+                                                <Route exact path="/hospital/create" component={HospitalChoice} />
+
                                                 <Route exact path="/hospital/create/patient" component={CreatePatient} />
                                                 <Route exact path="/hospital/create/doctor" component={CreateDoctor} />
                                                 <Route exact path="/hospital/view/doctor" component={HospitalListDoctors} />
-
-
                                             </p>
                                         </div>
                                     </div>

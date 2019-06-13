@@ -8,6 +8,7 @@ class Dashboard extends Component {
       <div>
         <Header />
         <SideBar />
+        
         <Content />
       </div>
     );

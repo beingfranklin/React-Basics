@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { ngrokurl } from './URL.js';
-// Import React Table
+import Card from 'card-vibes';
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 var url = ngrokurl;
-
 // json - create state - component did mount lifecyclehook- api call inside - get data .then - data to var - json 
 export default class HospitalListDoctors extends Component {
     constructor() {
@@ -43,6 +42,10 @@ export default class HospitalListDoctors extends Component {
 
         return (
             <div>
+                <Card style={{ width: '100%', padding: '20px' }}>
+                    <h3 className="box-title">Doctor List</h3>
+                </Card>
+
                 <ReactTable
                     data={data}
 
@@ -52,7 +55,7 @@ export default class HospitalListDoctors extends Component {
                             accessor: "doctorId"
                         },
                         {
-                            Header: "Fast Name",
+                            Header: "First Name",
                             accessor: "firstName"
                         },
                         {

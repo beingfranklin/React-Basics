@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Card from 'card-vibes';
+import { Link } from 'react-router-dom';
+
 
 class HospitalChoice extends Component {
       render() {
@@ -10,8 +12,10 @@ class HospitalChoice extends Component {
                                     <h3 className="box-title">Hey, Hospital ! Select Your Choice!!</h3>
                                     <br />
                               </Card>
-                              <button class="FormField__Button mr-20" >Create Doctor</button>
-                              <button class="FormField__Button mr-20" >Create Hospital</button>
+                               <Link to="/hospital/create/patient"><button class="FormField__Button mr-20" >Create Patient</button></Link>
+                               <Link to="/hospital/create/doctor"><button class="FormField__Button mr-20" >Create Doctor</button></Link>
+                               <Link to="/hospital/view/doctor"><button class="FormField__Button mr-20" >List Doctor</button></Link>
+
                         </div>
                   </div>
             );

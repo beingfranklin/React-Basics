@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Card from 'card-vibes';
+
 import { ngrokurl } from './URL.js';
 // Import React Table
 import ReactTable from "react-table";
@@ -38,7 +40,11 @@ export default class ListHospitals extends Component {
         console.log(this.state.data);
 
         return (
-            <div>
+            <div >
+                <Card style={{ width: '100%', padding: '20px' }}>
+                    <h3 className="box-title">Hospital List</h3>
+                </Card>
+
                 <ReactTable
                     data={data}
 
