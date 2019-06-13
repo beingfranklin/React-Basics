@@ -49,6 +49,10 @@ class CreateRecordDoc extends Component {
         response = JSON.parse(JSON.stringify(response));
         var loginres = response.data[0].status;
         console.log(loginres);
+        if (loginres == 'ok')
+        {
+          alert("Created Record!");
+        }
       })
       .catch(error => {
         console.log(error);
@@ -66,14 +70,14 @@ class CreateRecordDoc extends Component {
             <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="">User Name</label>
-                <input type="text" id="" className="FormField__Inputs" placeholder="Enter your User Name" name="username" value={this.state.username} onChange={this.handleChange} />
+                <input type="text" id="" className="FormField__Inputs" placeholder="Enter your Patient ID" name="username" value={this.state.username} onChange={this.handleChange} />
               </div>
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="">Last Name</label>
                 <input type="text" id="" className="FormField__Inputs" placeholder="Enter your Content" name="content" value={this.state.content} onChange={this.handleChange} />
               </div>
               <div className="FormField">
-                <label className="FormField__Label" htmlFor="">Doctor Id</label>
+                <label className="FormField__Label" htmlFor="">Doctor ID</label>
                 <input type="text" id="" className="FormField__Inputs" placeholder="Enter your Doctor Id" name="doctorId" value={this.state.doctorId} onChange={this.handleChange} />
               </div>
               <div className="FormField">

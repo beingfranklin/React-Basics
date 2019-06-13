@@ -5,11 +5,12 @@ import ListHospitals from '../components/ListHospitals';
 
 import Detail from '../components/Detail';
 import CreateRecordDoc from '../components/CreateRecordDoc';
-import CreateRecordDoctor from '../components/CreateRecordDoctor';
-import CreateRecordHospital from '../components/CreateRecordHospital';
+import CreateDoctor from './CreateDoctor';
+import CreateHospital from './CreateHospital';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import CreatePatient from '../components/CreatePatient';
 import RegulatorChoice from '../components/RegulatorChoice';
+import HospitalChoice from '../components/HospitalChoice';
 import HospitalListDoctors from '../components/HospitalListDoctors';
 
 export default class Content extends Component {
@@ -34,10 +35,13 @@ export default class Content extends Component {
 
                                                 <Route path="/doctor/:patientid/:doctorid/:recordid" component={Detail} />
                                                 <Route path="/doctor/create" component={CreateRecordDoc} />
-                                                <Route exact path="/regulator/create/doctor" component={CreateRecordDoctor} />
-                                                <Route exact path="/regulator/create/hospital" component={CreateRecordHospital} />
+                                                <Route exact path="/regulator/create/doctor" component={CreateDoctor} />
+                                                <Route exact path="/regulator/create/hospital" component={CreateHospital} />
                                                 <Route exact path="/regulator/create/" component={RegulatorChoice} />
+                                                <Route exact path="/hospital/" component={HospitalChoice} />
+                                                <Route exact path="/hospital/create/" component={HospitalChoice} />
                                                 <Route exact path="/hospital/create/patient" component={CreatePatient} />
+                                                <Route exact path="/hospital/create/doctor" component={CreateDoctor} />
                                                 <Route exact path="/hospital/view/doctor" component={HospitalListDoctors} />
 
 
