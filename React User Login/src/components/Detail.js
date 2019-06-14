@@ -58,7 +58,9 @@ export default class Detail extends Component {
                         console.log(decrypted.toString(CryptoJS.enc.Utf8));
                         var stored= decrypted.toString(CryptoJS.enc.Utf8);
                         localStorage.removeItem('RecordDataStore');
+                        // localStorage.setItem('RecordDataStore', stored);
                         localStorage.setItem('RecordDataStore', "Test Record");
+
                         console.log("local storage");
 
 
