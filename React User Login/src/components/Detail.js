@@ -15,7 +15,7 @@ export default class Detail extends Component {
             // Empty initialisation
         }
     }
-    async componentDidMount() {
+    componentDidMount() {
         console.log("Details Component did mount");
         console.log("Params is " + this.props.match.params.id);
         console.log(window.location.href);
@@ -57,25 +57,29 @@ export default class Detail extends Component {
                         //Read Record
                         console.log(decrypted.toString(CryptoJS.enc.Utf8));
                         var stored= decrypted.toString(CryptoJS.enc.Utf8);
-                        localStorage.removeItem('RecordDataStore');
+                        
                         // localStorage.setItem('RecordDataStore', stored);
-                        localStorage.setItem('RecordDataStore', "Test Record");
 
-                        console.log("local storage");
+                        var div = document.getElementById('RecordData');
+                        div.innerHTML += stored;
 
-
+                        // localStorage.removeItem('RecordDataStore');          
+                        // localStorage.setItem('RecordDataStore', "Test Record");                        
+                        // var div = document.getElementById('RecordData');
+                        // div.innerHTML += "localStorage.getItem('RecordDataStore')";
+                        // console.log("Data added to local storage");
 
                     }).catch(function (error) {
                         // handle error
                         console.log(error);
                     })
             })
-            const appendData = () => { 
-            console.log("appendData function");
-            var div = document.getElementById('RecordData');
-            div.innerHTML += localStorage.getItem('RecordDataStore');
-            };
-            appendData();
+            // const appendData = () => { 
+            // console.log("appendData function");
+            // var div = document.getElementById('RecordData');
+            // div.innerHTML += "localStorage.getItem('RecordDataStore')";
+            // };
+            // appendData();
     }
 
     render() {
