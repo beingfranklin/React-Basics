@@ -3,6 +3,7 @@ import axios from 'axios';
 import CryptoJSAES from "crypto-js/aes";
 import CryptoJS from "crypto-js"
 import { ngrokurl } from './URL.js';
+import Card from 'card-vibes';
 var url = ngrokurl;
 
 // import JSEncrypt from 'node-jsencrypt';
@@ -55,12 +56,24 @@ export default class Detail extends Component {
                         console.log(CryptoJS);
                         //Read Record
                         console.log(decrypted.toString(CryptoJS.enc.Utf8));
+                        var stored= decrypted.toString(CryptoJS.enc.Utf8);
+                        localStorage.removeItem('RecordDataStore');
+                        localStorage.setItem('RecordDataStore', "Test Record");
+                        console.log("local storage");
+
+
 
                     }).catch(function (error) {
                         // handle error
                         console.log(error);
                     })
             })
+            const appendData = () => { 
+            console.log("appendData function");
+            var div = document.getElementById('RecordData');
+            div.innerHTML += localStorage.getItem('RecordDataStore');
+            };
+            appendData();
     }
 
     render() {
@@ -70,7 +83,11 @@ export default class Detail extends Component {
                 <strong>PatientId : {this.props.match.params.patientid} </strong>
                 <strong>DoctorId : {this.props.match.params.doctorid}   </strong>
                 <strong>RecordId : {this.props.match.params.recordid}  </strong>
+                <Card style={{ width: '100%', padding: '20px' }}>
+                                    <div id="RecordData" className="box-title"></div>
+                </Card>
             </div >
         );
+        
     }
 }

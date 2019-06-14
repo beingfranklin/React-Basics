@@ -72,10 +72,10 @@ class SignInForm extends Component {
             this.props.history.push('/regulator');
           }
           else if ((this.state.type) === "hospital") {
-            this.props.history.push('/hospital/view/doctor');
+            localStorage.removeItem('hospitalId');
             localStorage.setItem('hospitalId', this.state.username);
             console.log("Local Storage Hospital ID -> " + localStorage.getItem('hospitalId'));
-
+            this.props.history.push('/hospital');
 
           }
           console.log("Login Page");
@@ -101,7 +101,7 @@ class SignInForm extends Component {
         <div className="App__Form">
           <div className="PageSwitcher">
             <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">
-              
+
             </NavLink>
           </div>
           <div className="FormTitle">
@@ -123,7 +123,7 @@ class SignInForm extends Component {
                  <input type="radio" value="regulator" name="type" /> Regulator
               </div>
               <div className="FormField">
-                <button className="FormField__Button mr-20">Sign In</button> <Link to="/" className="FormField__Link">Create an account</Link>
+                <button className="FormField__Button mr-20">Sign In</button>
               </div>
             </form>
           </div>
